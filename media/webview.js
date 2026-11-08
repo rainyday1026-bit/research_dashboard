@@ -36,6 +36,7 @@ function sortedGroups(groups) {
 function saveSort() { vscode.postMessage({ type: "sort", mode: SORT.mode, order: SORT.order, groupOrder: SORT.groupOrder }); }
 const app = document.getElementById("app");
 
+let renderedFile = null;
 function render() {
   const items = DATA.items.filter(it => !filter || JSON.stringify(it).toLowerCase().includes(filter.toLowerCase()));
   const groups = {};
@@ -55,7 +56,11 @@ function render() {
     ${body || `<div class="empty">STATUS.md 를 찾지 못함<br><small>${esc((DATA.roots || []).join(", "))}</small></div>`}
     <div style="padding:8px;font-size:10px;opacity:.5">훑은 시각 ${esc(DATA.scannedAt || "")}</div>`;
   const sel = DATA.items.find(it => it.file === selected);
+  // 다시 그려도 스크롤 위치 유지 (다른 카드를 고른 경우만 오른쪽을 맨 위로)
+  const oldLeft = document.getElementById("left"), oldDetail = document.getElementById("detail");
+  const leftTop = oldLeft ? oldLeft.scrollTop : 0, detailTop = oldDetail && renderedFile === selected ? oldDetail.scrollTop : 0;
   app.innerHTML = `<div id="left">${left}</div><div id="right"><div id="detail">${sel ? detail(sel) : `<div class="empty">왼쪽에서 작업을 고르세요.</div>`}</div>${chatBox(sel)}</div>`;
+  document.getElementById("left").scrollTop = leftTop; document.getElementById("detail").scrollTop = detailTop; renderedFile = selected;
   bind();
   const cl = document.getElementById("cl"); if (cl) cl.scrollTop = cl.scrollHeight;
 }

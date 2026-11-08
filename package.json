@@ -2,7 +2,7 @@
 	"name": "research-dashboard",
 	"displayName": "Research Dashboard",
 	"description": "STATUS.md 기반 연구 작업 대시보드 (research-log 형식)",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"publisher": "jhg1026",
 	"license": "MIT",
 	"engines": {
