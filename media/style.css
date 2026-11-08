@@ -1,0 +1,76 @@
+:root { --gap: 10px; }
+body { margin: 0; font-family: var(--vscode-font-family); font-size: var(--vscode-font-size); color: var(--vscode-foreground); background: var(--vscode-editor-background); }
+#app { display: grid; grid-template-columns: 340px 1fr; height: 100vh; }
+#left { border-right: 1px solid var(--vscode-panel-border); overflow-y: auto; }
+#right { display: flex; flex-direction: column; min-height: 0; }
+#detail { flex: 1; overflow-y: auto; padding: 16px 20px; min-height: 0; }
+.top { position: sticky; top: 0; background: var(--vscode-sideBar-background); padding: 8px; border-bottom: 1px solid var(--vscode-panel-border); display: flex; gap: 6px; align-items: center; z-index: 2; }
+.top input { flex: 1; padding: 4px 6px; background: var(--vscode-input-background); color: var(--vscode-input-foreground); border: 1px solid var(--vscode-input-border, transparent); }
+button { background: var(--vscode-button-secondaryBackground); color: var(--vscode-button-secondaryForeground); border: none; padding: 4px 8px; cursor: pointer; border-radius: 2px; }
+button.primary { background: var(--vscode-button-background); color: var(--vscode-button-foreground); }
+button:hover { filter: brightness(1.1); }
+.group { padding: 8px 8px 0; }
+.group h3 { margin: 6px 0 4px; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; opacity: .7; }
+.card { padding: 8px 10px; margin-bottom: 6px; border: 1px solid var(--vscode-panel-border); border-radius: 4px; cursor: pointer; background: var(--vscode-sideBar-background); }
+.card:hover { border-color: var(--vscode-focusBorder); }
+.card.sel { border-color: var(--vscode-focusBorder); background: var(--vscode-list-activeSelectionBackground); color: var(--vscode-list-activeSelectionForeground); }
+.card .t { font-weight: 600; }
+.card .m { font-size: 11px; opacity: .8; margin-top: 2px; display: flex; gap: 8px; align-items: center; }
+.badge { font-size: 10px; padding: 1px 6px; border-radius: 8px; color: #fff; }
+.badge.active { background: #2e8b57; } .badge.paused { background: #b8860b; } .badge.done { background: #556; }
+.bar { height: 4px; background: var(--vscode-progressBar-background, #555); opacity: .25; border-radius: 2px; margin-top: 6px; position: relative; }
+.bar > i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--vscode-progressBar-background, #0a84ff); opacity: 1; border-radius: 2px; }
+.card .now { font-size: 11px; margin-top: 5px; opacity: .85; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+h1 { font-size: 18px; margin: 0 0 4px; }
+.sub { opacity: .75; font-size: 12px; margin-bottom: 12px; }
+.sub code { font-size: 11px; }
+h2 { font-size: 13px; margin: 18px 0 6px; padding-bottom: 3px; border-bottom: 1px solid var(--vscode-panel-border); }
+.now-box { padding: 8px 10px; border-left: 3px solid var(--vscode-focusBorder); background: var(--vscode-textBlockQuote-background); white-space: pre-wrap; }
+p.block { white-space: pre-wrap; margin: 4px 0; }
+ul { padding-left: 18px; margin: 4px 0; }
+li.step.done { opacity: .6; text-decoration: line-through; }
+.res { display: grid; grid-template-columns: 90px 1fr; gap: 4px 10px; margin: 3px 0; align-items: baseline; }
+.res .d { opacity: .7; font-size: 11px; }
+.res a { color: var(--vscode-textLink-foreground); cursor: pointer; text-decoration: none; margin-right: 8px; font-size: 12px; }
+.res a:hover { text-decoration: underline; }
+.viewer { margin-top: 8px; padding: 8px; border: 1px solid var(--vscode-panel-border); border-radius: 4px; background: var(--vscode-editor-background); }
+.viewer .vh { display: flex; justify-content: space-between; align-items: center; font-size: 11px; opacity: .8; margin-bottom: 6px; gap: 8px; }
+.viewer img { max-width: 100%; height: auto; display: block; }
+.viewer pre { white-space: pre-wrap; font-family: var(--vscode-editor-font-family); font-size: 12px; margin: 0; max-height: 60vh; overflow: auto; }
+.viewer table { border-collapse: collapse; font-size: 11px; font-family: var(--vscode-editor-font-family); }
+.viewer th, .viewer td { border: 1px solid var(--vscode-panel-border); padding: 2px 6px; white-space: nowrap; }
+.viewer .tw { overflow: auto; max-height: 60vh; }
+.cmd { display: flex; gap: 6px; align-items: center; margin: 4px 0; }
+.cmd code { flex: 1; font-size: 11px; padding: 4px 6px; background: var(--vscode-textCodeBlock-background); border-radius: 3px; overflow-x: auto; white-space: nowrap; }
+.cmd .note { opacity: .7; font-size: 11px; }
+.actions { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0 0; }
+.empty { opacity: .7; padding: 30px; }
+.warn { color: var(--vscode-errorForeground); }
+.top select { padding: 3px 4px; background: var(--vscode-dropdown-background); color: var(--vscode-dropdown-foreground); border: 1px solid var(--vscode-dropdown-border, transparent); font-size: 11px; }
+.hint { font-size: 11px; opacity: .6; padding: 6px 10px 0; }
+.card[draggable] { cursor: grab; }
+.card.dragging { opacity: .4; }
+.card .grip { opacity: .4; margin-right: 6px; font-size: 11px; letter-spacing: -2px; }
+.group.over { outline: 1px dashed var(--vscode-focusBorder); border-radius: 4px; }
+.group h3 { display: flex; align-items: center; gap: 4px; }
+.group h3 .gn { text-transform: none; }
+.group h3 .gb { margin-left: auto; display: flex; gap: 6px; }
+.group h3 .gb a { cursor: pointer; opacity: .5; font-size: 11px; } .group h3 .gb a:hover { opacity: 1; }
+.drop-hint { font-size: 11px; opacity: .5; padding: 6px 10px; border: 1px dashed var(--vscode-panel-border); border-radius: 4px; margin-bottom: 6px; }
+.group h3 .tg { cursor: pointer; opacity: .6; margin-right: 2px; } .group.closed h3 { margin-bottom: 6px; }
+h2.sec { cursor: pointer; user-select: none; } h2.sec .arrow { display: inline-block; width: 14px; opacity: .6; } h2.sec.closed { opacity: .7; }
+#chat { border-top: 1px solid var(--vscode-panel-border); background: var(--vscode-sideBar-background); display: flex; flex-direction: column; max-height: 45vh; }
+#chat .ch { display: flex; align-items: center; gap: 8px; padding: 6px 12px; font-size: 12px; border-bottom: 1px solid var(--vscode-panel-border); }
+#chat.closed .ch { border-bottom: none; }
+#chat .ch .gb { margin-left: auto; display: flex; gap: 4px; } #chat .ch button { font-size: 11px; padding: 2px 6px; }
+#chat .at { opacity: .6; font-size: 10px; }
+#chat #ct { cursor: pointer; opacity: .7; }
+#cl { flex: 1; overflow-y: auto; padding: 6px 12px; min-height: 60px; }
+.msg { margin: 6px 0; } .msg .who { font-size: 10px; opacity: .7; margin-bottom: 2px; }
+.msg .body { padding: 6px 10px; border-radius: 6px; font-size: 12px; line-height: 1.5; }
+.msg.user .body { background: var(--vscode-textBlockQuote-background); border-left: 3px solid var(--vscode-focusBorder); white-space: pre-wrap; }
+.msg.assistant .body { background: var(--vscode-editor-background); border: 1px solid var(--vscode-panel-border); }
+.msg .body pre { white-space: pre-wrap; font-family: var(--vscode-editor-font-family); font-size: 11px; background: var(--vscode-textCodeBlock-background); padding: 6px; border-radius: 3px; margin: 4px 0; }
+.msg .body ul { margin: 2px 0; padding-left: 18px; }
+.ci { display: flex; gap: 6px; padding: 6px 12px 8px; }
+.ci textarea { flex: 1; resize: vertical; font-family: var(--vscode-font-family); font-size: 12px; padding: 4px 6px; background: var(--vscode-input-background); color: var(--vscode-input-foreground); border: 1px solid var(--vscode-input-border, transparent); }

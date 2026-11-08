@@ -1,0 +1,97 @@
+{
+	"name": "research-dashboard",
+	"displayName": "Research Dashboard",
+	"description": "STATUS.md 기반 연구 작업 대시보드 (research-log 형식)",
+	"version": "0.3.0",
+	"publisher": "jhg1026",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.85.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"main": "./extension.js",
+	"extensionKind": [
+		"workspace"
+	],
+	"contributes": {
+		"commands": [
+			{
+				"command": "researchDashboard.open",
+				"title": "Research Dashboard: 열기"
+			},
+			{
+				"command": "researchDashboard.refresh",
+				"title": "Research Dashboard: 다시 훑기 (바뀐 STATUS 만)"
+			},
+			{
+				"command": "researchDashboard.rebuild",
+				"title": "Research Dashboard: 캐시 지우고 전체 다시 읽기"
+			}
+		],
+		"configuration": {
+			"title": "Research Dashboard",
+			"properties": {
+				"researchDashboard.roots": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"default": [],
+					"description": "STATUS.md 를 찾을 최상위 폴더들 (비우면 열린 작업 폴더)"
+				},
+				"researchDashboard.cacheFile": {
+					"type": "string",
+					"default": "",
+					"description": "파싱 결과 캐시 파일. order.json, chat.json 도 같은 폴더에 저장 (비우면 VS Code 확장 저장 폴더)"
+				},
+				"researchDashboard.maxDepth": {
+					"type": "number",
+					"default": 6,
+					"description": "탐색 깊이"
+				},
+				"researchDashboard.skipDirs": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"default": [
+						"node_modules",
+						"__pycache__",
+						"backups",
+						".git"
+					],
+					"description": "탐색에서 건너뛸 폴더 이름"
+				},
+				"researchDashboard.pollSeconds": {
+					"type": "number",
+					"default": 20,
+					"description": "알려진 STATUS.md 수정 확인 주기(초)"
+				},
+				"researchDashboard.claudePath": {
+					"type": "string",
+					"default": "",
+					"description": "claude 실행 파일 경로(비우면 ~/.local/bin/claude 등 자동)"
+				},
+				"researchDashboard.claudeModel": {
+					"type": "string",
+					"default": "",
+					"description": "질문 칸에 쓸 모델(비우면 claude 기본값)"
+				},
+				"researchDashboard.claudeTimeoutSeconds": {
+					"type": "number",
+					"default": 300,
+					"description": "질문 하나의 최대 대기(초)"
+				}
+			}
+		}
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rainyday1026-bit/research_dashboard"
+	}
+}

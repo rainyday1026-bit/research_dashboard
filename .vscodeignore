@@ -1,0 +1,3 @@
+*.vsix
+test_webview.js
+.gitignore
