@@ -13,11 +13,29 @@
 - STATUS.md 수정 시각이 바뀐 것만 다시 읽는다(`pollSeconds` 마다). 전체 재탐색은 ↻ 또는 `Research Dashboard: 다시 훑기`.
 
 ## 설치
-1. [Releases](https://github.com/rainyday1026-bit/research_dashboard/releases) 에서 `.vsix` 를 받는다. 또는 직접 빌드: `npx @vscode/vsce package`
-2. VS Code 명령 팔레트 `Extensions: Install from VSIX...` 또는 `code --install-extension research-dashboard-<버전>.vsix`
-3. 창 다시 로드.
+VS Code 로 그 서버(또는 PC)에 접속한 상태에서 한다. Node.js 가 필요하다.
 
-질문 칸과 "claude 열기" 를 쓰려면 [Claude Code](https://claude.com/claude-code) 가 설치·로그인되어 있어야 한다.
+1. 받기
+   ```bash
+   git clone https://github.com/rainyday1026-bit/research_dashboard.git ~/research_dashboard
+   ```
+2. 설치 파일(.vsix) 만들기
+   ```bash
+   cd ~/research_dashboard && npx -y @vscode/vsce@2.32.0 package
+   ```
+   (최신 vsce 는 Node 22 일부 버전에서 `ERR_REQUIRE_ESM` 으로 실패하므로 2.32.0 을 쓴다)
+3. 설치: 명령 팔레트(Ctrl+Shift+P) → `Extensions: Install from VSIX...` → 만든 `research-dashboard-<버전>.vsix` 선택 → 창 다시 로드
+4. 볼 폴더 설정: 명령 팔레트 → `Preferences: Open Remote Settings (JSON)` (로컬 PC 면 `Open User Settings (JSON)`)
+   ```json
+   "researchDashboard.roots": ["/연구/폴더"]
+   ```
+   적지 않으면 VS Code 에 열린 작업 폴더를 본다.
+
+업데이트: `cd ~/research_dashboard && git pull` 후 2–3 을 다시 한다.
+
+필요한 것
+- 카드는 `STATUS.md` 가 있는 폴더마다 하나씩 생긴다. research-log 형식으로 기록하고 있어야 한다.
+- 질문 칸과 "claude 열기" 는 [Claude Code](https://claude.com/claude-code) 가 설치·로그인되어 있어야 한다.
 
 ## 설정
 | 설정 | 기본값 | 설명 |
